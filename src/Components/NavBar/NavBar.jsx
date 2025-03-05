@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import userIcon from "../../assets/user.png";
 
 const NavBar = () => {
@@ -6,9 +6,9 @@ const NavBar = () => {
     <div className="flex justify-between lg:justify-between items-center my-6">
       <div className=""></div>
       <div className="space-x-2.5 lg:space-x-5">
-        <NavLink>Home</NavLink>
-        <NavLink>Career</NavLink>
-        <NavLink>About</NavLink>
+        <Link>Home</Link>
+        <Link>Career</Link>
+        <Link>About</Link>
       </div>
       <div className="flex space-x-2.5  items-center">
         <div>
