@@ -3,7 +3,7 @@ import { MdVisibility } from "react-icons/md";
 
 const NewsCards = ({ singleNews }) => {
   return (
-    <div className="card bg-base-100 shadow-xl my-3 p-4">
+    <div className="card bg-base-100 shadow-xl my-3 p-4 mr-8 lg:mr-0">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <img
