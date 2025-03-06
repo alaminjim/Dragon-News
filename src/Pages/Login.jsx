@@ -1,6 +1,30 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
+  const { createUserLogIn, setUser } = useContext(AuthContext);
+
+  const handelLogin = (e) => {
+    e.preventDefault();
+
+    const from = new FormData(e.target);
+    const email = from.get("email");
+    const password = from.get("password");
+
+    console.log(email, password);
+
+    createUserLogIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        setUser(user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   return (
     <div className="min-h-screen flex justify-center items-center">
       <div className="card bg-base-100 w-[552px] h-[500px] shrink-0 shadow-2xl">
@@ -9,12 +33,13 @@ const Login = () => {
             Login Your Account
           </h1>
           <hr className="mt-6 text-[#E7E7E7] mx-7"></hr>
-          <form className="fieldset mt-5">
+          <form onSubmit={handelLogin} className="fieldset mt-5">
             <label className="fieldset-label font-bold text-sm pl-[22px]">
               Email Address
             </label>
             <input
               type="email"
+              name="email"
               className="input w-11/12 mx-auto bg-[#F3F3F3] border-none"
               placeholder="Enter your email address"
             />
@@ -23,6 +48,7 @@ const Login = () => {
             </label>
             <input
               type="password"
+              name="password"
               className="input w-11/12 mx-auto bg-[#F3F3F3] border-none"
               placeholder="Enter your password"
             />
